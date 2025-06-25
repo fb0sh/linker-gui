@@ -1,0 +1,25 @@
+[linker]
+version = "0.1.0"
+name = "linker"
+root = "W:/"
+categories = ["信息收集", "漏洞利用", "后渗透", "工具", "参考"]
+references_categories = ["文档", "工具", "poc", "exp"]
+
+[langs]
+# home 为空 则说明在系统环境变量中
+java = { home = "env/jdk/jdk-1.8", bin = "bin/java.exe", opts = ["-jar"] }
+java11 = { home = "env/java11", bin = "bin/java.exe", opts = [] }
+python3 = { home = "", bin = "python3.exe" }
+system = { home = "", bin = "cmd.exe", opts = ["/C", "start"] }            # linux xdg-open
+
+[references]
+exploitdb = { category = "exp", link = "https://www.exploit-db.com/" }
+github = { category = "工具", link = "https://github.com/" }
+cyberchef = { category = "工具", link = "https://gchq.github.io/CyberChef/" }
+payloadsallthethings = { category = "poc", link = "https://github.com/swisskyrepo/PayloadsAllTheThings" }
+exps = { category = "exp", link = "https://github.com/zhzyker/exphub" }
+
+[weapons]
+SpringExploitGUI = { category = "漏洞利用", home = "Exploits/SpringBoot", lang = "java", file = "XM-SpringExploitGUI-v2.3.jar" }
+"菜刀" = { category = "后渗透", home = "Web/C2/cknife", lang = "system", file = "caidao.exe" }
+"D盾" = { category = "后渗透", home = "Audit/D盾/d_safe_2.1.8.3", lang = "system", file = "D_Safe_Manage.exe" }

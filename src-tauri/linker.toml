@@ -1,0 +1,47 @@
+[linker]
+version = "0.1.0"
+name = "linker"
+root = "E:/tools"
+categories = ["WebShell", "Shiro", "ThinkPHP", "Spring", "Other"]
+references_categories = ["文档", "工具", "poc", "exp"]
+
+[langs]
+#  # linux xdg-open# home 为空 则说明在系统环境变量中
+system = { home = "", bin = "cmd.exe", opts = ["/C", "start"] }
+cli = { home = "", bin = "cmd.exe", opts = ["/C", "start"] }
+java8 = { home = "env/jdk-1.8", bin = "bin/java.exe", opts = ["-jar"] }
+java11 = { home = "env/jdk-11", bin = "bin/java.exe", opts = ["-jar"] }
+python3 = { home = "", bin = "python.exe", append_env = true }
+
+[references]
+exploitdb = { category = "exp", link = "https://www.exploit-db.com/" }
+
+[weapons]
+# WebShell
+"Godzilla" = { category = "WebShell", home = "webshell/Godzilla", lang = "java8", file = "godzilla.jar", src = "https://github.com/BeichenDream/Godzilla" }
+# shiro
+"ShiroAttack2" = { category = "Shiro", home = "exploit/shiro/shiro_attack-4.7.0-SNAPSHOT-all", lang = "java8", file = "shiro_attack-4.7.0-SNAPSHOT-all.jar", src = "https://github.com/SummerSec/ShiroAttack2" }
+"Pyke-Shiro_0.3" = { category = "Shiro", home = "exploit/shiro", lang = "java8", file = "Pyke-Shiro_0.3.jar", src = "https://github.com/sma11new/Pyke-Shiro" }
+"ShiroExploit.V2.51" = { category = "Shiro", home = "exploit/shiro/ShiroExploit.V2.51", lang = "java8", file = "ShiroExploit.jar", src = "https://github.com/feihong-cs/ShiroExploit-Deprecated" }
+"Shiro_550_NoCC" = { category = "Shiro", home = "exploit/shiro", lang = "java8", file = "Shiro-550-with-NoCC.jar", src = "https://github.com/dr0op/shiro-550-with-NoCC" }
+# thinkphp
+"ThinkphpGUI-1.3_lotus6" = { category = "ThinkPHP", home = "exploit/thinkphp", lang = "java8", file = "ThinkphpGUI-1.3-SNAPSHOT.jar", src = "https://github.com/Lotus6/ThinkphpGUI" }
+"thinkphp_gui_tools" = { category = "ThinkPHP", home = "exploit/thinkphp", lang = "java8", file = "ThinkPHP.jar", src = "https://github.com/bewhale/thinkphp_gui_tools" }
+"ThinkphpGUI_nex121" = { category = "ThinkPHP", home = "exploit/thinkphp", lang = "java8", file = "ThinkphpGUI.jar", src = "https://github.com/nex121/ThinkphpGUI" }
+"TPScan" = { category = "ThinkPHP", home = "exploit/thinkphp", lang = "system", file = "TPscan", src = "https://github.com/Lucifer1993/TPscan" }
+# spring
+"SpringExploitGUI_v2.3" = { category = "Spring", home = "exploit/spring", lang = "java8", file = "XM-SpringExploitGUI-v2.3.jar", src = "https://github.com/charonlight/SpringExploitGUI" }
+"SpringExploit_1.3" = { category = "Spring", home = "exploit/spring", lang = "java8", file = "SpringBootExploit-1.3-SNAPSHOT-all.jar", src = "https://github.com/0x727/SpringBootExploit" }
+"SpringBoot-Scan" = { category = "Spring", home = "exploit/spring", lang = "system", file = "SpringBoot-Scan", src = "https://github.com/AabyssZG/SpringBoot-Scan" }
+"SpringExploit_go" = { category = "Spring", home = "exploit/spring", lang = "system", file = "SpringExploit_0.1.9_windows_amd64", src = "https://github.com/SummerSec/SpringExploit" }
+# nacos
+"NacosExploitGUI_v4.0" = { category = "Other", home = "exploit/nacos", lang = "java8", file = "NacosExploitGUI_v4.0.jar", src = "https://github.com/charonlight/NacosExploitGUI" }
+"NacosExploit-v2.0.0" = { category = "Other", home = "exploit/nacos", lang = "java8", file = "NacosExploit-v2.0.0.jar", src = "https://github.com/h0ny/NacosExploit" }
+# jenkins
+"JenkinsExploit-GUI-1.3" = { category = "Other", home = "exploit/jenkins", lang = "java8", file = "JenkinsExploit-GUI-1.3-SNAPSHOT.jar", src = "https://github.com/TheBeastofwar/JenkinsExploit-GUI" }
+"JenkinsExploitGUI_v1.0" = { category = "Other", home = "exploit/jenkins", lang = "java8", file = "JenkinsExploitGUI_v1.0.jar", src = "https://github.com/charonlight/JenkinsExploitGUI" }
+# JBoss
+"JavaJBoss" = { category = "Other", home = "exploit/jboss", lang = "java8", file = "JavaJBoss.jar", src = "https://github.com/20142995/JavaJboss" }
+"jbossScan" = { category = "Other", home = "exploit/jboss", lang = "system", file = "jbossScan", src = "https://github.com/GGyao/jbossScan" }
+# Struts2
+"Struts2VulsScanTools" = { category = "Other", home = "exploit/struts2", lang = "java8", file = "Struts2_19.32.jar", src = "https://github.com/abc123info/Struts2VulsScanTools" }

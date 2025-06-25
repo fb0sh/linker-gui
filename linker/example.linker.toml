@@ -1,0 +1,38 @@
+[linker]
+version = "0.1.0"
+name = "linker"
+root = "C:/Users/Administrator/Desktop/linker"
+categories = ["信息收集", "漏洞利用", "后渗透", "工具", "参考"]
+references_categories = ["文档", "工具", "poc", "exp"]
+
+[langs]
+java = { home = "env/java1.8", bin = "bin/java.exe" }
+java11 = { home = "env/java11", bin = "bin/java.exe" }
+python3 = { home = "", bin = "bin/python.exe" }
+system = { home = "", bin = "start" }
+
+[references]
+exploitdb = { category = "exp", link = "https://www.exploit-db.com/" }
+github = { category = "工具", link = "https://github.com/" }
+cyberchef = { category = "工具", link = "https://gchq.github.io/CyberChef/" }
+payloadsallthethings = { category = "poc", link = "https://github.com/swisskyrepo/PayloadsAllTheThings" }
+exps = { category = "exp", link = "https://github.com/zhzyker/exphub" }
+
+[weapons]
+fscan = { home = "web/fscan", lang = "system", lang_opt = [
+], file = "fscan.exe", opts = [
+], category = "信息收集" }
+
+sqlmap = { home = "web/sqlmap", lang = "python3", lang_opt = [
+], file = "sqlmap.py", opts = [
+], category = "漏洞利用" }
+
+TPExploitGUI = { home = "web/TPExploitGUI", lang = "java", lang_opt = [
+    "-jar",
+], file = "TPExploitGUI.jar", opts = [
+], category = "漏洞利用" }
+
+"哥斯拉" = { home = "web/哥斯拉", lang = "java", lang_opt = [
+    "-jar",
+], file = "Godzilla.jar", opts = [
+], category = "后渗透" }
