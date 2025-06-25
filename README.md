@@ -17,11 +17,41 @@ A Linker-GUI based on <a href="https://github.com/tauri-apps/tauri">Tauri</a>.
 工具和启动器需要分开下载
 
 
+## Configure
+配置linker-gui.exe 相对目录下的 linker.toml
 
+```toml
+[linker]
+version = "0.1.0"
+name = "linker"
+root = "E:/tools"
+categories = [ "Info Gather" ]
+references_categories = ["文档", "工具", "poc", "exp"]
 
+[langs]
+#  # linux xdg-open# home 为空 则说明在系统环境变量中
+system = { home = "", bin = "cmd.exe", opts = ["/C", "start"] }
+java8 = { home = "env/jdk-1.8", bin = "bin/java.exe", opts = ["-jar"] }
+java11 = { home = "env/jdk-11", bin = "bin/java.exe", opts = ["-jar"] }
+python3 = { home = "", bin = "python.exe", append_env = true }
 
+[references]
+exploitdb = { category = "exp", link = "https://www.exploit-db.com/" }
 
+[weapons]
+# Info Gather
+"Search_Viewer_V4.2" = { category = "Info Gather", home = "info", lang = "system", file = "Search_Viewer_V4.2.exe", src = "https://github.com/G3et/Search_Viewer" }
+"FofaViewer_1.1.15" = { category = "Info Gather", home = "info/FofaViewer_1.1.15_JDK8", lang = "java8", file = "fofaviewer.jar", src = "https://github.com/wgpsec/fofa_viewer" }
+"mitan" = { category = "Info Gather", home = "info/mitan", lang = "java8", file = "mitan-jar-with-dependencies.jar", src = "https://github.com/kkbo8005/mitan" }
 
+"some_full" = {
+    category = "Info Gather", 
+    home = "info/mitan", 
+    lang = "java8", lang_opts=[],
+    file = "mitan-jar-with-dependencies.jar", opts = [],
+    src = "https://github.com/kkbo8005/mitan"
+}
+```
 
 
 ## Development
