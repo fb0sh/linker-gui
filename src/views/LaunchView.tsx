@@ -105,7 +105,7 @@ function LaunchView() {
     }
 
     return (
-        <div className="flex flex-col p-2 gap-1">
+        <div className="flex flex-col p-2 gap-1 m-1">
             {requirements.length !== 0 && (
                 <Banner
                     aria-label="Critical"
