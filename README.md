@@ -1,7 +1,7 @@
 <h1 align="center">
   <img src="./src-tauri/icons/icon.png" alt="Clash" width="128" />
   <br>
-  Linker-GUI1
+  Linker-GUI
   <br>
 </h1>
 
