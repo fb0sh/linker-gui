@@ -18,8 +18,8 @@ A Linker-GUI based on <a href="https://github.com/tauri-apps/tauri">Tauri</a>.
 
 
 ## Configure
-配置linker-gui.exe 相对目录下的 linker.toml
-
+配置linker-gui.exe 相对目录下的 linker.toml<br>
+请充分尊重工具作者，标注来源
 ```toml
 [linker]
 version = "0.1.0"
@@ -52,7 +52,11 @@ exploitdb = { category = "exp", link = "https://www.exploit-db.com/" }
     src = "https://github.com/kkbo8005/mitan"
 }
 ```
-
+## Advantages
+- 性能友好
+- 配置度更高
+- 更友好的界面
+- 使用toml配置
 
 ## Development
 
