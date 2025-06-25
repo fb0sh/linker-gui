@@ -17,8 +17,10 @@ A Linker-GUI based on <a href="https://github.com/tauri-apps/tauri">Tauri</a>.
 ![VSCode](https://img.shields.io/badge/VSCode-007ACC?logo=visual-studio-code&logoColor=white)
 
 ## Preview
-## launch a application
+## master view
 ![预览](./linker-usage.png)
+## launch
+![launch](./linker-launch.png)
 ## search for 
 ![search](./linker-searching.png)
 ## Install
