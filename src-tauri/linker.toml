@@ -1,5 +1,5 @@
 [linker]
-version = "0.1.0"
+version = "0.1.1"
 name = "linker"
 root = "E:/tools"
 categories = ["WebShell", "Shiro", "ThinkPHP", "Spring", "Other"]

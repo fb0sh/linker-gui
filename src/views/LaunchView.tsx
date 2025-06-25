@@ -40,34 +40,39 @@ function WeaponBox({
 
     return (
         <div className="flex flex-col mb-2">
-            {filteredCategories.map(({ category, weapons }) => (
-                <div key={category}>
-                    <p className="text-lg my-1">{category}</p>
-                    <div className="flex flex-wrap justify-start gap-2">
-                        {weapons.map(([weapon_name, _]) => (
-                            <Button
-                                key={weapon_name}
-                                onClick={async () => {
-                                    setLaunchStatus(`🚀 正在启动 ${weapon_name}...`);
-                                    try {
-                                        await invoke("invoke_weapon", { weapon_name });
-                                        setLaunchStatus(`✅ ${weapon_name} 启动成功`);
-                                    } catch (err) {
-                                        console.error(err);
-                                        setLaunchStatus(`❌ 启动失败 ${weapon_name}: ${String(err)}`);
-                                    }
-                                }}
-                                className="w-[220px] text-center whitespace-nowrap overflow-hidden"
-                            >
-                                {weapon_name}
-                            </Button>
-                        ))}
+            {filteredCategories.length === 0 ? (
+                <div className="text-gray-500 text-sm mt-2">暂无相关工具</div>
+            ) : (
+                filteredCategories.map(({ category, weapons }) => (
+                    <div key={category}>
+                        <p className="text-lg my-1">{category}</p>
+                        <div className="flex flex-wrap justify-start gap-2">
+                            {weapons.map(([weapon_name, _]) => (
+                                <Button
+                                    key={weapon_name}
+                                    onClick={async () => {
+                                        setLaunchStatus(`🚀 正在启动 ${weapon_name}...`);
+                                        try {
+                                            await invoke("invoke_weapon", { weapon_name });
+                                            setLaunchStatus(`✅ ${weapon_name} 启动成功`);
+                                        } catch (err) {
+                                            console.error(err);
+                                            setLaunchStatus(`❌ 启动失败 ${weapon_name}: ${String(err)}`);
+                                        }
+                                    }}
+                                    className="w-[220px] text-center whitespace-nowrap overflow-hidden"
+                                >
+                                    {weapon_name}
+                                </Button>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))
+            )}
         </div>
     );
 }
+
 
 function LaunchView() {
     const [linker, setLinker] = React.useState<Linker | null>(null);
@@ -101,7 +106,7 @@ function LaunchView() {
     };
 
     if (!linker || !linker.linker) {
-        return <Blankslate>there is no configuration.</Blankslate>;
+        return <Blankslate>没有任何配置</Blankslate>;
     }
 
     return (

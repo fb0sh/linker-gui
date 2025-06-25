@@ -34,7 +34,7 @@ A Linker-GUI based on <a href="https://github.com/tauri-apps/tauri">Tauri</a>.
 请充分尊重工具作者，标注来源
 ```toml
 [linker]
-version = "0.1.0"
+version = "0.1.1"
 name = "linker"
 root = "E:/tools"
 categories = [ "Info Gather" ]
