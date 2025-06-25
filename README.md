@@ -9,6 +9,12 @@
 A Linker-GUI based on <a href="https://github.com/tauri-apps/tauri">Tauri</a>.
 </h3>
 
+![Rust](https://img.shields.io/badge/Rust-000000?logo=rust&logoColor=white)
+![Tauri](https://img.shields.io/badge/Tauri-24C8D8?logo=tauri&logoColor=white)
+![React](https://img.shields.io/badge/React-20232a.svg?logo=react&logoColor=61DAFB)
+![tailwindcss](https://img.shields.io/badge/tailwindcss-38B2AC.svg?logo=tailwind-css&logoColor=white)
+![VSCode](https://img.shields.io/badge/VSCode-007ACC?logo=visual-studio-code&logoColor=white)
+
 ## Preview
 ![预览](./linker-usage.png)
 ## Install
