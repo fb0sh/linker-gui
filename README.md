@@ -1,7 +1,7 @@
 <h1 align="center">
   <img src="./src-tauri/icons/icon.png" alt="Clash" width="128" />
   <br>
-  Linker-GUI
+  Linker-GUI1
   <br>
 </h1>
 
@@ -39,7 +39,7 @@ references_categories = ["文档", "工具", "poc", "exp"]
 system = { home = "", bin = "cmd.exe", opts = ["/C", "start"] }
 java8 = { home = "env/jdk-1.8", bin = "bin/java.exe", opts = ["-jar"] }
 java11 = { home = "env/jdk-11", bin = "bin/java.exe", opts = ["-jar"] }
-python3 = { home = "", bin = "python.exe", append_env = true }
+python3 = { home = "", bin = "python.exe" }
 
 [references]
 exploitdb = { category = "exp", link = "https://www.exploit-db.com/" }
