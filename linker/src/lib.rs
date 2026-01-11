@@ -1,11 +1,34 @@
 use anyhow::{Context, Result};
+use dirs_next::config_dir;
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::path::PathBuf;
 use tokio::process::{Child, Command};
 use which::which;
-const CREATE_NO_WINDOW: u32 = 0x08000000;
 
+const CREATE_NO_WINDOW: u32 = 0x08000000;
+pub fn linker_config_path() -> Result<PathBuf> {
+    let path = config_dir()
+        .context("无法获取配置目录 (config_dir)")?
+        .join("linker")
+        .join("linker.toml");
+    Ok(path)
+}
+fn ensure_config_file(path: &std::path::Path) -> Result<()> {
+    // 1. 创建父目录（如果不存在）
+    if let Some(parent) = path.parent() {
+        std::fs::create_dir_all(parent)
+            .with_context(|| format!("无法创建配置目录: {}", parent.display()))?;
+    }
+
+    // 2. 创建文件（如果不存在）
+    if !path.exists() {
+        std::fs::write(path, "")
+            .with_context(|| format!("无法创建配置文件: {}", path.display()))?;
+    }
+
+    Ok(())
+}
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Linker {
     #[serde(rename = "linker")]
@@ -55,8 +78,10 @@ pub struct Weapon {
 
 impl Linker {
     pub async fn parse() -> Result<(Linker, Vec<String>)> {
+        let config_path = linker_config_path()?;
+        ensure_config_file(&config_path)?;
         let content =
-            std::fs::read_to_string("linker.toml").context("无法读取配置文件: linker.toml")?;
+            std::fs::read_to_string(config_path).context("无法读取配置文件: linker.toml")?;
         let linker: Linker = toml::from_str(&content).context("无法解析配置文件: linker.toml")?;
 
         let mut requirements = vec![];
@@ -128,17 +153,23 @@ impl Linker {
         let target_home = PathBuf::from(&self.linker_meta.root).join(&weapon.home);
 
         let target_file = &target_home.join(&weapon.file);
-
-        let c = Command::new(&program)
-            .args(&lang.opts) // 全局语言选项
+        let mut c = Command::new(&program);
+        c.args(&lang.opts) // 全局语言选项
             .args(&weapon.lang_opt) // 语言选项
             .arg(target_file)
             .args(&weapon.opts)
-            .creation_flags(CREATE_NO_WINDOW)
-            .current_dir(target_home)
+            .current_dir(target_home);
+
+        // Windows 平台才设置 CREATE_NO_WINDOW
+        #[cfg(windows)]
+        {
+            use std::os::windows::process::CommandExt; // 扩展 trait
+            c.creation_flags(CREATE_NO_WINDOW); // CREATE_NO_WINDOW
+        }
+
+        let c = c
             .spawn()
             .context(format!("[weapon] {} 无法启动", &weapon_name))?;
-
         Ok(c)
     }
 
@@ -150,13 +181,19 @@ impl Linker {
 
         let system = self.langs.get("system").context("lang.system 未设置")?;
 
-        let c = Command::new(&system.bin)
-            .args(&system.opts)
-            .arg(&reference.link)
-            .creation_flags(CREATE_NO_WINDOW)
+        let mut c = Command::new(&system.bin);
+        c.args(&system.opts).arg(&reference.link);
+
+        // Windows 平台才设置 CREATE_NO_WINDOW
+        #[cfg(windows)]
+        {
+            use std::os::windows::process::CommandExt; // 扩展 trait
+            c.creation_flags(CREATE_NO_WINDOW); // CREATE_NO_WINDOW
+        }
+
+        let c = c
             .spawn()
             .context(format!("[reference] {} 无法打开", &reference_name))?;
-
         Ok(c)
     }
 }
